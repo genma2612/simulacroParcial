@@ -1,0 +1,38 @@
+<table class="table table-striped table-bordered">
+<thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Tipo</th>
+        <th>streno</th>
+        <th>Cantidad de Publico</th>
+        <!--th>Imagen</th-->
+        <th>Detalle</th>
+    </tr>
+</thead>
+<tbody id="turnos">
+    <tr *ngFor="let item of listadoRecibido">
+        <td>
+            {{item.id}}
+        </td>
+        <td>
+            {{item.nombre}}
+        </td>
+        <td>
+            {{item.tipo}}
+        </td>
+        <td>
+            {{item.estreno}}
+        </td>
+        <td>
+            {{item.cantPublico}}
+        </td>
+        <!--td *ngIf="tieneImagen('../../../assets/images/' + item.id + '.jpg')">
+            <img src={{item.foto}} style="width:20px;height:30px;">
+        </td-->
+        <td>
+            <button class="btn btn-outline-info" (click)="seleccionarPelicula(item)">Seleccionar</button>
+        </td>
+    </tr>
+</tbody>
+</table>
