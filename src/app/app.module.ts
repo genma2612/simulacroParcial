@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -11,6 +12,7 @@ import { PeliculaAltaComponent } from './peliculas/alta/pelicula-alta/pelicula-a
 import { ActorAltaComponent } from './actor/alta/actor-alta/actor-alta.component';
 import { ActorListadoComponent } from './actor/listado/actor-listado/actor-listado.component';
 import { DetallePeliculaComponent } from './peliculas/detalle-pelicula/detalle-pelicula.component';
+import { TablaPaisesComponent } from './componentes/tabla-paises/tabla-paises.component';
 
 @NgModule({
   declarations: [
@@ -22,11 +24,13 @@ import { DetallePeliculaComponent } from './peliculas/detalle-pelicula/detalle-p
     PeliculaAltaComponent,
     ActorAltaComponent,
     ActorListadoComponent,
-    DetallePeliculaComponent
+    DetallePeliculaComponent,
+    TablaPaisesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpClientModule
   ],
   providers: [],

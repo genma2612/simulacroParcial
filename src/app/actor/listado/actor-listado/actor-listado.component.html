@@ -1,1 +1,7 @@
-<p>actor-listado works!</p>
+<li *ngFor="let item of arrayActores">
+    {{item.nombre}} {{item.apellido}} - 
+    Edad: {{item.edad}} - 
+    País: {{item.pais}} - 
+    <!--Foto: <img src={{item.foto}} style="width:20px;height:30px;"> -->
+    <button class="btn btn-outline-info"  (click)="seleccionarActor(item)">Detalles</button>
+</li>

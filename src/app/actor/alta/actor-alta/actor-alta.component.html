@@ -1,1 +1,32 @@
-<p>actor-alta works!</p>
+<div>
+<form>
+    <div class="row">
+        <div class="col">
+            <div class="form-group col">
+                <input type="text" [(ngModel)]="nombre" name="nombre" class="form-control"
+                    placeholder="Nombre">
+            </div>
+            <p></p>
+            <div class="form-group col">
+                <input type="text" [(ngModel)]="apellido" name="apellido" class="form-control"
+                    placeholder="Apellido">
+            </div>
+            <p></p>
+            <div class="form-group col">
+                <input type="text" [(ngModel)]="edad" name="edad" class="form-control"
+                    placeholder="Edad">
+            </div>
+            <p></p>
+            <div class="form-group col">
+                <input type="text" class="form-control"
+                    placeholder={{paisSeleccionado}} disabled>
+            </div>
+        </div>
+        <div class="col">
+            <app-tabla-paises (enviarPais)="actualizarPais($event)"></app-tabla-paises>
+        </div>
+        <P></P>
+        <button class="btn btn-primary" (click)="guardarActor()">Guardar</button>
+    </div>
+</form>
+</div>

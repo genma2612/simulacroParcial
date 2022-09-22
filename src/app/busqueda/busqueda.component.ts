@@ -7,7 +7,9 @@ import { ServicioPeliculasService } from '../servicios/servicio-peliculas.servic
   styleUrls: ['./busqueda.component.css']
 })
 export class BusquedaComponent implements OnInit {
-  peliculaActiva:any= null;
+  elementoActivo:any= null;
+  queMuestro:string = 'actores';
+
   constructor(private servicioPeliculas: ServicioPeliculasService) {}
 
   comoVer:string="lista";
@@ -17,7 +19,7 @@ export class BusquedaComponent implements OnInit {
   }
 
   tomoPeliculaSeleccionada($event:any){
-    this.peliculaActiva=$event;
+    this.elementoActivo=$event;
   }
 
   listadoDePeliculas(){
@@ -33,6 +35,10 @@ export class BusquedaComponent implements OnInit {
       this.comoVer = 'lista';
       this.tipoDeBoton = 'btn-danger';
     }
+  }
+
+  mostrar(param:string){
+    this.queMuestro = param;
   }
 
 }
