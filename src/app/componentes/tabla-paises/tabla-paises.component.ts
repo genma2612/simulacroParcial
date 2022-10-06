@@ -9,7 +9,7 @@ export class TablaPaisesComponent implements OnInit {
   @Output() enviarPais:EventEmitter<any> = new EventEmitter<any>();
   selectedRow = "";
   paises: any;
-  codPaises = "ar,mx,us,es,gb,au";
+  codPaises = "ar,mx,us,es,gb,au,it";
   
   currentRowNumber = 0;
 
@@ -23,7 +23,8 @@ export class TablaPaisesComponent implements OnInit {
 
   mostrarClickeado($event: any, index:number) {
     this.currentRowNumber = index;
-    this.enviarPais.emit($event.translations.spa.common);
+    this.enviarPais.emit($event);
+    //this.enviarPais.emit($event.translations.spa.common);
     console.log($event.translations.spa.common);
   }
 

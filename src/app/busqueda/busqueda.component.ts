@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output,EventEmitter, Input } from '@angular/core';
+import { ActoresService } from '../servicios/actores.service';
 import { ServicioPeliculasService } from '../servicios/servicio-peliculas.service';
 
 @Component({
@@ -7,13 +8,15 @@ import { ServicioPeliculasService } from '../servicios/servicio-peliculas.servic
   styleUrls: ['./busqueda.component.css']
 })
 export class BusquedaComponent implements OnInit {
+  @Input() recibirActor?:any;
+  @Output() enviarActor:EventEmitter<any> = new EventEmitter<any>();
   elementoActivo:any= null;
   queMuestro:string = 'actores';
+  actorTemp:any;
+  constructor(private servicioPeliculas: ServicioPeliculasService, private servicioActores: ActoresService) {}
 
-  constructor(private servicioPeliculas: ServicioPeliculasService) {}
-
-  comoVer:string="lista";
-  tipoDeBoton:string='btn-danger';
+  comoVer:string="Tabla";
+  tipoDeBoton:string='btn-info';
 
   ngOnInit(): void {
   }
@@ -26,19 +29,28 @@ export class BusquedaComponent implements OnInit {
     return this.servicioPeliculas.ListadoDePeliculas;
   }
 
+  listadoDeActores(){
+    return this.servicioActores.ListadoDeActores;
+  }
+
   CambiarLaVista(){
-    if(this.comoVer == 'lista'){
-        this.comoVer = 'tabla';
+    if(this.comoVer == 'Lista'){
+        this.comoVer = 'Tabla';
         this.tipoDeBoton = 'btn-info';
     }
     else{
-      this.comoVer = 'lista';
+      this.comoVer = 'Lista';
       this.tipoDeBoton = 'btn-danger';
     }
   }
 
   mostrar(param:string){
     this.queMuestro = param;
+  }
+
+  guardarActor($event:any){
+    console.info("Actor:", $event);
+    this.servicioActores.guardarActorEnListado($event);
   }
 
 }

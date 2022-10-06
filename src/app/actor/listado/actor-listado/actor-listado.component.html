@@ -1,7 +1,34 @@
+<!--
+
 <li *ngFor="let item of arrayActores">
     {{item.nombre}} {{item.apellido}} - 
     Edad: {{item.edad}} - 
-    País: {{item.pais}} - 
-    <!--Foto: <img src={{item.foto}} style="width:20px;height:30px;"> -->
-    <button class="btn btn-outline-info"  (click)="seleccionarActor(item)">Detalles</button>
+    País: {{item.pais.translations.spa.common}} - <img src="{{item.pais.flags.svg}}" style="width:26px;height:20px;">
+    -  <button class="btn btn-outline-info"  (click)="seleccionarActor(item)">Detalles</button>
 </li>
+
+-->
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Pais</th>
+        </tr>
+    </thead>
+    <tbody id="actores">
+        <tr [ngClass]="(currentRowNumber !== (i + 1))?'':'table-success'"
+                (click)="mostrarClickeado(item, i + 1)" *ngFor="let item of arrayActores; index as i">
+            <td >
+                {{item.nombre}} {{item.apellido}}
+            </td>
+            <td >
+                {{item.edad}}
+            </td>
+            <td >
+                <img src="{{item.pais.flags.svg}}" style="width:26px;height:20px;"> {{item.pais.translations.spa.common}} 
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,1 +1,81 @@
-<p>pelicula-alta works!</p>
+<div class="container"><p><p></p>
+        <div class="row">
+            <div class="col">
+                <form>
+                    <div class="row block">
+                        <div class="col-md-3">
+                            <img [src]="imagePreview"
+                                style="width:250px;height:360px;"
+                                (click)="fileUpload.click()">
+                            <input type="file" class="file-input"
+                                (change)="onFileSelected($event)" #fileUpload>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group col">
+                                <input type="text" [(ngModel)]="id"
+                                    name="id"
+                                    class="form-control"
+                                    placeholder="ID">
+                            </div>
+                            <p></p>
+                            <div class="form-group col">
+                                <input type="text" [(ngModel)]="nombre"
+                                    name="nombre"
+                                    class="form-control"
+                                    placeholder="Nombre">
+                            </div>
+                            <p></p>
+                            <div class="form-group col">
+                                <input type="text" [(ngModel)]="tipo"
+                                    name="tipo"
+                                    class="form-control"
+                                    placeholder="tipo">
+                            </div>
+                            <p></p>
+                            <div class="form-group col">
+                                <input type="text" [(ngModel)]="estreno"
+                                    name="estreno"
+                                    class="form-control"
+                                    placeholder="Año de estreno">
+                            </div>
+                            <p></p>
+                            <div class="form-group col">
+                                <input type="text" [(ngModel)]="publico"
+                                    name="publico"
+                                    class="form-control"
+                                    placeholder="Audiencia">
+                            </div>
+                            <p></p>
+                            <div class="form-group col">
+                                <input type="text" [(ngModel)]="actorNombre"
+                                    name="actor" class="form-control"
+                                    placeholder="Seleccionar actor" disabled>
+                            </div>
+                            <p></p>
+                            <div class="form-group col">
+                                <input type="text" [(ngModel)]="nombreDeArchivo"
+                                    name="nombreDeArchivo" class="form-control"
+                                    placeholder="Haga click en la imagen para
+                                    cambiarla." disabled>
+                            </div>
+                            <p></p>
+                        </div>
+                        <div class="col-md-5">
+                            <app-actor-listado
+                                (seleccioneUnActor)="seleccionarActor($event)"
+                                [arrayActores]="traerActores()"></app-actor-listado>
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-primary" [ngClass]="claseBoton"
+                            (click)="guardarPelicula()">
+                            <span *ngIf="loading" class="spinner-border
+                                spinner-border-sm" role="status"
+                                aria-hidden="true"></span>
+                            Guardar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
