@@ -1,1 +1,39 @@
-<p>actor-pelicula works!</p>
+<main>
+    <div class="container py-4">
+
+      <div class="align-items-center">
+        <app-listado-con-acciones (enviarPeliculas)="seleccionarPeliculas($event)" (enviarPais)="seleccionarPais($event)" (enviarActor)="seleccionarActor($event)" [arrayActores]="listadoDeActores()" [arrayPeliculas]="listadoDePeliculas()"></app-listado-con-acciones>
+      </div>
+      <p></p>
+      <div class="row align-items-md-stretch">
+        <div class="col-md-4">
+          <div class="h-100 p-2 bg-light border">
+            <h3>Listado de Peliculas
+              <button *ngIf="peliculas!=null" type="button" class="btn btn-danger btn-sm" (click)="peliculas=null">X</button>
+            </h3>
+            <app-detalle-actor-peliculas *ngIf="peliculas != null" [peliculasRecibidas]="peliculas"></app-detalle-actor-peliculas>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="h-100 p-2 bg-light border">
+            <h3>Detalle del país
+              <button *ngIf="pais!=null" type="button" class="btn btn-danger btn-sm" (click)="pais=null">X</button>
+            </h3>
+            <app-detalle-pais *ngIf="pais != null" [paisRecibido]="pais"></app-detalle-pais>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="h-100 p-2 bg-light border">
+            <h3>Detalle del actor
+              <button *ngIf="actor != null" type="button" class="btn btn-danger btn-sm" (click)="actor=null">X</button>
+            </h3>
+           <app-detalle-actor *ngIf="actor != null" [actorRecibido]="actor"></app-detalle-actor>
+          </div> 
+        </div>
+      </div>
+  
+      <footer class="pt-3 mt-4 text-muted border-top">
+        &copy; 2022
+      </footer>
+    </div>
+  </main>
