@@ -67,7 +67,7 @@ export class PeliculaAltaComponent implements OnInit {
           this.nuevaPeli.estreno = this.estreno;
           this.nuevaPeli.cantPublico = this.publico;
           this.nuevaPeli.foto = event.data.media;
-          this.nuevaPeli.actor = this.actor;
+          this.nuevaPeli.actor = this.actorNombre;
           this.claseBoton = "";
           this.loading = false; // Flag variable 
           this.servPelis.guardarActorEnListado(this.nuevaPeli);
