@@ -1,0 +1,10 @@
+<table class="table table-bordered table-hover">
+    <tbody id="paises">
+        <tr [ngClass]="(currentRowNumber !== (i + 1))?'':'table-success'"
+                (click)="mostrarClickeado(item, i + 1)" *ngFor="let item of paises|async; index as i">
+            <td >
+                {{item.flag}} - {{item.translations.spa.common}}
+            </td>
+        </tr>
+    </tbody>
+</table>
