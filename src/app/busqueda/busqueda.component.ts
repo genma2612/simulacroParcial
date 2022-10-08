@@ -1,6 +1,9 @@
+import { Firestore } from 'firebase/firestore';
+import { Pelicula } from './../clases/pelicula';
 import { Component, OnInit, Output,EventEmitter, Input } from '@angular/core';
 import { ActoresService } from '../servicios/actores.service';
 import { ServicioPeliculasService } from '../servicios/servicio-peliculas.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-busqueda',
@@ -13,10 +16,19 @@ export class BusquedaComponent implements OnInit {
   elementoActivo:any= null;
   queMuestro:string = 'actores';
   actorTemp:any;
-  constructor(private servicioPeliculas: ServicioPeliculasService, private servicioActores: ActoresService) {}
+  pelisFire:any;
+
+  constructor(private servicioPeliculas: ServicioPeliculasService, private servicioActores: ActoresService) {
+    this.servicioPeliculas.ListadoDePeliculasFirebase.subscribe(
+      resp=>{
+        console.log(resp);
+        this.pelisFire = resp;
+    });
+  }
 
   comoVer:string="Tabla";
   tipoDeBoton:string='btn-info';
+
 
   ngOnInit(): void {
   }
@@ -51,6 +63,10 @@ export class BusquedaComponent implements OnInit {
   guardarActor($event:any){
     console.info("Actor:", $event);
     this.servicioActores.guardarActorEnListado($event);
+  }
+
+  peliculasDesdeFire(){
+    return this.servicioPeliculas.ListadoDePeliculasFirebase;
   }
 
 }

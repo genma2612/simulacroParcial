@@ -35,6 +35,13 @@
       </footer>
     </div>
   </main>
+
+  pelis:
+  <ul>
+    <li *ngFor="let item of pelisFire | async">
+      {{ item }}
+    </li>
+  </ul>
 <!--app-componente-alta (creamosUnProducto)="funcionLocal($event)"></app-componente-alta>
 <app-componente-detalle [productoSeleccionado]="productoActivo"></app-componente-detalle>
 <app-componente-listado [listadoRecibido]="listadoProductos" (seleccioneUnProducto)="tomoProductoSeleccionado($event)"></app-componente-listado-->

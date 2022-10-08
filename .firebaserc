@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "simulacroparcial-d0614"
+  },
+  "targets": {
+    "simulacroparcial-d0614": {
+      "hosting": {
+        "simulacroParcial": [
+          "simulacroparcial-d0614"
+        ]
+      }
+    }
   }
 }

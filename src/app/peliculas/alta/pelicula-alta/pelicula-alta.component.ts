@@ -56,9 +56,6 @@ export class PeliculaAltaComponent implements OnInit {
     this.upload(this.selectedFile).subscribe(
       (event: any) => {
         if (typeof (event) === 'object') {
-
-          // Short link via api response
-          //console.info(event);
           this.nuevaPeli = {};
           this.imagenPosterURL = event.data.media;
           this.nuevaPeli.id = this.id;

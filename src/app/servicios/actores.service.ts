@@ -1,10 +1,11 @@
+import { Actor } from './../clases/actor';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ActoresService {
-  arrayActores:any[];
+  arrayActores:Actor[];
   constructor() {
     if(!localStorage.getItem('actores')){
       let actoresPorDefecto = [{nombre:"Emilia", apellido:"Clarke", edad:35, pais:{flags:{svg:"https://flagcdn.com/gb.svg"}, capital:"London", population:67215293, translations:{spa:{common:"Reino Unido"}}}},
