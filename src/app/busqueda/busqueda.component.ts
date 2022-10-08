@@ -1,4 +1,4 @@
-import { Firestore } from 'firebase/firestore';
+import { PelisFireService } from './../servicios/pelis-fire.service';
 import { Pelicula } from './../clases/pelicula';
 import { Component, OnInit, Output,EventEmitter, Input } from '@angular/core';
 import { ActoresService } from '../servicios/actores.service';
@@ -16,14 +16,15 @@ export class BusquedaComponent implements OnInit {
   elementoActivo:any= null;
   queMuestro:string = 'actores';
   actorTemp:any;
-  pelisFire:any;
+  pelisFire$?:Observable<Pelicula[]>;
+  test:any;
 
-  constructor(private servicioPeliculas: ServicioPeliculasService, private servicioActores: ActoresService) {
-    this.servicioPeliculas.ListadoDePeliculasFirebase.subscribe(
-      resp=>{
-        console.log(resp);
-        this.pelisFire = resp;
-    });
+  constructor(private servicioPeliculas: ServicioPeliculasService, 
+    private servicioActores: ActoresService,
+    private readonly servicioFire: PelisFireService) {
+      this.pelisFire$ = servicioFire.getAll();
+      this.test = servicioFire.getPelicula("9swL8n9pZBxh9RIQDrYt");
+
   }
 
   comoVer:string="Tabla";
@@ -63,10 +64,6 @@ export class BusquedaComponent implements OnInit {
   guardarActor($event:any){
     console.info("Actor:", $event);
     this.servicioActores.guardarActorEnListado($event);
-  }
-
-  peliculasDesdeFire(){
-    return this.servicioPeliculas.ListadoDePeliculasFirebase;
   }
 
 }

@@ -1,3 +1,4 @@
+import { PelisFireService } from './../../../servicios/pelis-fire.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActoresService } from 'src/app/servicios/actores.service';
 import { ServicioPeliculasService } from 'src/app/servicios/servicio-peliculas.service';
@@ -29,7 +30,8 @@ export class PeliculaAltaComponent implements OnInit {
   loading = false;
   claseBoton = '';
 
-  constructor(private http: HttpClient, private servicioActores: ActoresService, private servPelis: ServicioPeliculasService) {
+  constructor(private http: HttpClient, private servicioActores: ActoresService, 
+    private servPelis: ServicioPeliculasService, private PelisFireService: PelisFireService) {
   }
 
   ngOnInit(): void {
@@ -68,6 +70,7 @@ export class PeliculaAltaComponent implements OnInit {
           this.claseBoton = "";
           this.loading = false; // Flag variable 
           this.servPelis.guardarActorEnListado(this.nuevaPeli);
+          this.PelisFireService.agregarPelicula(this.nuevaPeli);
           this.Toast.fire({
             icon: 'success',
             title: 'Pelicula guardada'

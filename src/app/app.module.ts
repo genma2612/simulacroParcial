@@ -26,6 +26,9 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from 'src/environments/environment';
+//Test
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { Firestore } from 'firebase/firestore';
 
 
 @NgModule({
@@ -53,6 +56,8 @@ import { environment } from 'src/environments/environment';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
+    //Test
+    //Test
     BrowserModule,
     AppRoutingModule,
     FormsModule,

@@ -1,9 +1,9 @@
+import { Firestore } from 'firebase/firestore';
 import { Pelicula } from './../clases/pelicula';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { doc, Firestore, setDoc, collection } from "firebase/firestore";
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+
 
 @Injectable({
   providedIn: 'root'
@@ -21,25 +21,18 @@ export class ServicioPeliculasService {
   {id:578, nombre:"El Secreto de sus Ojos", tipo:"Terror", estreno:1979, cantPublico:1500, actor:"Ricardo Darín", foto:"https://thumbsnap.com/i/LAL7ZV8H.jpg" },
   {id:999, nombre:"Amadeus", tipo:"Musical", estreno:1984, cantPublico:1500, actor:"Tom Hulce", foto:"https://thumbsnap.com/i/hk6zkQro.jpg"}];
 
-  constructor(private httpClient: HttpClient, private firestore: AngularFirestore) {
+  constructor(private httpClient: HttpClient) {
     if(!localStorage.getItem('peliculas')){
       localStorage.setItem('peliculas', JSON.stringify(this.listadoPeliculasPorDefecto))
     }
     this.listadoPeliculas = JSON.parse(localStorage.getItem('peliculas')!);
-    this.listadoPeliculas.forEach(element => {
-      this.firestore.collection('peliculas').doc(element.id.toString()).set(JSON.parse(JSON.stringify(element)))
-      .catch((error) => {
-        console.log(error);
-      })
-    });
    }
 
   get ListadoDePeliculas(){
     return this.listadoPeliculas;
   }
 
-  get ListadoDePeliculasFirebase(){
-    return this.firestore.collection("peliculas").get();
+  ListadoDePeliculasFirebase(){
   }
 
   guardarActorEnListado(peliculaRecibida:any){

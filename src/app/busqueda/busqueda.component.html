@@ -34,14 +34,15 @@
         &copy; 2022
       </footer>
     </div>
-  </main>
 
-  pelis:
-  <ul>
-    <li *ngFor="let item of pelisFire | async">
-      {{ item }}
-    </li>
-  </ul>
+    pelis
+    <ul>
+      <li *ngFor="let item of pelisFire$ | async">
+      {{item.id}} - {{ item.nombre }}
+      </li>
+    </ul>
+    asdfg - {{test.nombre}}
+  </main>
 <!--app-componente-alta (creamosUnProducto)="funcionLocal($event)"></app-componente-alta>
 <app-componente-detalle [productoSeleccionado]="productoActivo"></app-componente-detalle>
 <app-componente-listado [listadoRecibido]="listadoProductos" (seleccioneUnProducto)="tomoProductoSeleccionado($event)"></app-componente-listado-->
