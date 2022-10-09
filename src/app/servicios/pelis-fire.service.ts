@@ -1,4 +1,4 @@
-import { AngularFirestore, AngularFirestoreCollection  } from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument  } from '@angular/fire/compat/firestore';
 import { Pelicula } from '../clases/pelicula';
 import { Injectable } from '@angular/core';
 import { doc, collection, collectionData, docData } from '@angular/fire/firestore';
@@ -13,6 +13,8 @@ export class PelisFireService {
 
   private pelisCollection?: AngularFirestoreCollection<Pelicula>;
   pelis: Observable<Pelicula[]>;
+  private itemDoc?: AngularFirestoreDocument<Pelicula>;
+  peliSeleccionada?: Observable<Pelicula>;
 
   constructor(private firestore: AngularFirestore) { 
     this.pelis = this.getAll();
@@ -24,8 +26,8 @@ export class PelisFireService {
   }
 
   getPelicula(id: string){
-    const peliculaDocumentReference = this.firestore.doc(`peliculas/${id}`);
-    return peliculaDocumentReference.snapshotChanges();
+    return this.firestore.doc<Pelicula>('items/9swL8n9pZBxh9RIQDrYt');
+    //this.peliSeleccionada = this.itemDoc.valueChanges();
   }
 
   agregarPelicula(peli: Pelicula) {
