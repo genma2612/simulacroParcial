@@ -1,6 +1,9 @@
+import { PelisFireService } from './../servicios/pelis-fire.service';
+import { Pelicula } from './../clases/pelicula';
 import { Component, OnInit, Output,EventEmitter, Input } from '@angular/core';
 import { ActoresService } from '../servicios/actores.service';
 import { ServicioPeliculasService } from '../servicios/servicio-peliculas.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-busqueda',
@@ -13,10 +16,20 @@ export class BusquedaComponent implements OnInit {
   elementoActivo:any= null;
   queMuestro:string = 'actores';
   actorTemp:any;
-  constructor(private servicioPeliculas: ServicioPeliculasService, private servicioActores: ActoresService) {}
+  pelisFire$?:Observable<Pelicula[]>;
+  test:any;
+
+  constructor(private servicioPeliculas: ServicioPeliculasService, 
+    private servicioActores: ActoresService,
+    private readonly servicioFire: PelisFireService) {
+      this.pelisFire$ = servicioFire.getAll();
+      this.test = servicioFire.getPelicula("9swL8n9pZBxh9RIQDrYt");
+
+  }
 
   comoVer:string="Tabla";
   tipoDeBoton:string='btn-info';
+
 
   ngOnInit(): void {
   }

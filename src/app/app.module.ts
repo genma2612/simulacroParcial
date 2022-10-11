@@ -13,14 +13,22 @@ import { ActorAltaComponent } from './actor/alta/actor-alta/actor-alta.component
 import { ActorListadoComponent } from './actor/listado/actor-listado/actor-listado.component';
 import { DetallePeliculaComponent } from './peliculas/detalle-pelicula/detalle-pelicula.component';
 import { TablaPaisesComponent } from './componentes/tabla-paises/tabla-paises.component';
-import { ActorComponent } from './clases/actor/actor.component';
-import { PeliculaComponent } from './clases/pelicula/pelicula.component';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
 import { ActorPeliculaComponent } from './componentes/actor-pelicula/actor-pelicula.component';
 import { ListadoConAccionesComponent } from './actor/listado-con-acciones/listado-con-acciones.component';
 import { DetalleActorComponent } from './actor/detalle-actor/detalle-actor.component';
 import { DetallePaisComponent } from './componentes/detalle-pais/detalle-pais.component';
 import { DetalleActorPeliculasComponent } from './componentes/detalle-actor-peliculas/detalle-actor-peliculas.component';
+//firebase
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { environment } from 'src/environments/environment';
+//Test
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { Firestore } from 'firebase/firestore';
 
 
 @NgModule({
@@ -35,8 +43,6 @@ import { DetalleActorPeliculasComponent } from './componentes/detalle-actor-peli
     ActorListadoComponent,
     DetallePeliculaComponent,
     TablaPaisesComponent,
-    ActorComponent,
-    PeliculaComponent,
     NavbarComponent,
     ActorPeliculaComponent,
     ListadoConAccionesComponent,
@@ -45,6 +51,13 @@ import { DetalleActorPeliculasComponent } from './componentes/detalle-actor-peli
     DetalleActorPeliculasComponent
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
+    //Test
+    //Test
     BrowserModule,
     AppRoutingModule,
     FormsModule,
