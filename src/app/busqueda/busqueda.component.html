@@ -10,22 +10,26 @@
       <div class="row align-items-md-stretch">
         <div class="col-md-4">
           <div class="h-100 p-2 bg-light border">
-            <h2>Para borrar</h2>
-            <!--app-componente-alta (creamosUnProducto)="funcionLocal($event)"></app-componente-alta-->
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="h-100 p-2 bg-light border">
-            <h2>Solo mostrar
-              <button *ngIf="elementoActivo!=null" type="button" class="btn btn-danger" (click)="elementoActivo=null">X</button>
+            <h2>Mostrar
+              <button *ngIf="verPeli!=null" type="button" class="btn btn-danger" (click)="verPeli=null">X</button>
             </h2>
-            <app-detalle-pelicula *ngIf="elementoActivo != null" [peliculaSeleccionada]="elementoActivo"></app-detalle-pelicula>
+            <app-detalle-pelicula *ngIf="verPeli != null" [peliculaSeleccionada]="verPeli"></app-detalle-pelicula>
           </div>
         </div>
         <div class="col-md-4">
           <div class="h-100 p-2 bg-light border">
-            <h2>Modificar</h2>
-            <!--app-componente-detalle [productoSeleccionado]="productoActivo"></app-componente-detalle-->
+            <h2>Modificar
+              <button *ngIf="editarPeli!=null" type="button" class="btn btn-danger" (click)="editarPeli=null">X</button> 
+            </h2>
+            <app-modificar-pelicula *ngIf="editarPeli != null" [peliculaSeleccionada]="editarPeli"></app-modificar-pelicula>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="h-100 p-2 bg-light border">
+            <h2>Borrar
+              <button *ngIf="borrarPeli!=null" type="button" class="btn btn-danger" (click)="borrarPeli=null">X</button>
+            </h2>
+            <app-borrar-pelicula *ngIf="borrarPeli != null" [(peliculaSeleccionada)]="borrarPeli"></app-borrar-pelicula>
           </div>
         </div>
       </div>
@@ -34,15 +38,4 @@
         &copy; 2022
       </footer>
     </div>
-
-    pelis
-    <ul>
-      <li *ngFor="let item of pelisFire$ | async">
-      {{item.id}} - {{ item.nombre }}
-      </li>
-    </ul>
-    asdfg - {{test.nombre}}
   </main>
-<!--app-componente-alta (creamosUnProducto)="funcionLocal($event)"></app-componente-alta>
-<app-componente-detalle [productoSeleccionado]="productoActivo"></app-componente-detalle>
-<app-componente-listado [listadoRecibido]="listadoProductos" (seleccioneUnProducto)="tomoProductoSeleccionado($event)"></app-componente-listado-->

@@ -1,0 +1,46 @@
+<!--
+<ul class="list-group">
+    <li class="list-group-item">
+        <input type="text" value="{{peliculaSeleccionada.nombre}}" placeholder="Nombre">
+    </li>
+    <li class="list-group-item">ID: {{peliculaSeleccionada.id}}</li>
+    <li class="list-group-item">Género: {{peliculaSeleccionada.tipo}}</li>
+    <li class="list-group-item">Estreno: {{peliculaSeleccionada.estreno}}</li>
+    <li class="list-group-item">Cantidad de Público: {{peliculaSeleccionada.cantPublico}}</li>
+    <li class="list-group-item"><img class="center" src="{{peliculaSeleccionada.foto}}" style="max-width:280px; max-height:1000px"></li>
+    <button type="button" class="btn btn-info" (click)="modificar(peliculaSeleccionada)">Guardar</button>
+</ul>
+-->
+<div *ngIf="peliculaSeleccionada" class="container">
+    <h4>Editar Película</h4>
+    <form #peliForm="ngForm" (ngSubmit)="onUpdate(peliculaSeleccionada)">
+        <div class="form-group">
+            <label>Nombre</label>
+            <input class="form-control" name="nombre" #nameCtrl="ngModel" [(ngModel)]="peliculaSeleccionada.nombre" placeholder="Nombre"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label>Estreno</label>
+            <input class="form-control" name="estreno" #authorCtrl="ngModel" [(ngModel)]="peliculaSeleccionada.estreno"
+                placeholder="Estreno" required>
+        </div>
+
+        <div class="form-group">
+            <label>Género</label>
+            <input class="form-control" name="tipo" #genreCtrl=ngModel [(ngModel)]="peliculaSeleccionada.tipo"
+            placeholder="Género">
+        </div>
+
+        <div class="form-group">
+            <label>Público</label>
+            <input class="form-control" name="público" #authorCtrl="ngModel" [(ngModel)]="peliculaSeleccionada.cantPublico"
+                placeholder="Público" required>
+        </div>
+
+        <div class="form-group float-right">
+            <button type="submit" class="btn btn-success" [disabled]="!peliForm.valid">
+                <i class="bi bi-plus"></i>Modificar Película</button>
+        </div>
+    </form>
+</div>

@@ -3,8 +3,6 @@ import { Pelicula } from '../clases/pelicula';
 import { Injectable } from '@angular/core';
 import { doc, collection, collectionData, docData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { Firestore } from 'firebase/firestore';
-
 
 @Injectable({
   providedIn: 'root'
@@ -22,11 +20,12 @@ export class PelisFireService {
 
   getAll() {
     this.pelisCollection = this.firestore.collection<Pelicula>('peliculas');
-    return this.pelisCollection.valueChanges();
+    return this.pelisCollection.valueChanges({idField: 'uid'}) as Observable<Pelicula[]>;
+    //return this.pelisCollection.valueChanges({ idField: 'uid' });
   }
 
   getPelicula(id: string){
-    return this.firestore.doc<Pelicula>('items/9swL8n9pZBxh9RIQDrYt');
+    return this.firestore.doc<Pelicula>(`items/${id}`);
     //this.peliSeleccionada = this.itemDoc.valueChanges();
   }
 
@@ -39,7 +38,7 @@ export class PelisFireService {
     return peliculaDocumentReference.update(peli);
   }
 
-  borrarPeli(id: string) {
+  borrarPeli(id: any) {
     const peliculaDocumentReference = this.firestore.doc(`peliculas/${id}`);
     return peliculaDocumentReference.delete();
   }

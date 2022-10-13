@@ -1,0 +1,7 @@
+<ul class="list-group">
+    <li class="list-group-item">{{peliculaSeleccionada.nombre}}</li>
+    <li class="list-group-item">ID: {{peliculaSeleccionada.id}}</li>
+    <li class="list-group-item"><img class="center" src="{{peliculaSeleccionada.foto}}" style="max-width:280px; max-height:1000px"></li>
+    <a class="btn btn-danger btn-sm " (click)="borrarPelicula(peliculaSeleccionada)" role="button">Borrar Película?</a>
+</ul>
+

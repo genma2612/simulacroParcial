@@ -29,6 +29,8 @@ import { environment } from 'src/environments/environment';
 //Test
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { Firestore } from 'firebase/firestore';
+import { ModificarPeliculaComponent } from './peliculas/modificar-pelicula/modificar-pelicula.component';
+import { BorrarPeliculaComponent } from './peliculas/borrar-pelicula/borrar-pelicula.component';
 
 
 @NgModule({
@@ -48,7 +50,9 @@ import { Firestore } from 'firebase/firestore';
     ListadoConAccionesComponent,
     DetalleActorComponent,
     DetallePaisComponent,
-    DetalleActorPeliculasComponent
+    DetalleActorPeliculasComponent,
+    ModificarPeliculaComponent,
+    BorrarPeliculaComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),

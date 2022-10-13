@@ -7,11 +7,11 @@
         <th>streno</th>
         <th>Cantidad de Publico</th>
         <!--th>Imagen</th-->
-        <th>Detalle</th>
+        <th>Acciones</th>
     </tr>
 </thead>
-<tbody id="turnos">
-    <tr *ngFor="let item of listadoRecibido">
+<tbody>
+    <tr *ngFor="let item of listadoRecibido | async">
         <td>
             {{item.id}}
         </td>
@@ -31,7 +31,9 @@
             <img src={{item.foto}} style="width:20px;height:30px;">
         </td-->
         <td>
-            <button class="btn btn-outline-info" (click)="seleccionarPelicula(item)">Seleccionar</button>
+            <button class="btn btn-info" (click)="seleccionarPelicula([item, caso[0]])">Detalles</button>
+            <button class="btn btn-warning" (click)="seleccionarPelicula([item, caso[1]])">Modificar</button>
+            <button class="btn btn-danger" (click)="seleccionarPelicula([item, caso[2]])">Borrar</button>
         </td>
     </tr>
 </tbody>

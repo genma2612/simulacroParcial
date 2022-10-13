@@ -1,9 +1,11 @@
-<li *ngFor="let item of listadoRecibido">
+<li *ngFor="let item of listadoRecibido | async">
     ID: {{item.id}} - 
     Nombre: {{item.nombre}} - 
     Tipo: {{item.tipo}} - 
     Fecha Estreno: {{item.estreno}} - 
     Cantidad de Público: {{item.cantPublico}} - 
     <!--Foto: <img src={{item.foto}} style="width:20px;height:30px;"> -->
-    <button class="btn btn-outline-info" (click)="seleccionarPelicula(item)">Detalles</button>
+    <button class="btn btn-outline-info" (click)="seleccionarPelicula([item, caso[0]])">Detalles</button>
+    <button class="btn btn-outline-warning" (click)="seleccionarPelicula([item, caso[1]])">Modificar</button>
+    <button class="btn btn-outline-danger" (click)="seleccionarPelicula([item, caso[2]])">Borrar</button>
 </li>
