@@ -11,30 +11,30 @@
     <button type="button" class="btn btn-info" (click)="modificar(peliculaSeleccionada)">Guardar</button>
 </ul>
 -->
-<div *ngIf="peliculaSeleccionada" class="container">
+<div *ngIf="peliSelected" class="container">
     <h4>Editar Película</h4>
-    <form #peliForm="ngForm" (ngSubmit)="onUpdate(peliculaSeleccionada)">
+    <form #peliForm="ngForm" (ngSubmit)="onUpdate(peliSelected)">
         <div class="form-group">
             <label>Nombre</label>
-            <input class="form-control" name="nombre" #nameCtrl="ngModel" [(ngModel)]="peliculaSeleccionada.nombre" placeholder="Nombre"
+            <input class="form-control" name="nombre" #nameCtrl="ngModel" [(ngModel)]="peliSelected.nombre" placeholder="Nombre"
                 required>
         </div>
 
         <div class="form-group">
             <label>Estreno</label>
-            <input class="form-control" name="estreno" #authorCtrl="ngModel" [(ngModel)]="peliculaSeleccionada.estreno"
+            <input class="form-control" name="estreno" #authorCtrl="ngModel" [(ngModel)]="peliSelected.estreno"
                 placeholder="Estreno" required>
         </div>
 
         <div class="form-group">
             <label>Género</label>
-            <input class="form-control" name="tipo" #genreCtrl=ngModel [(ngModel)]="peliculaSeleccionada.tipo"
+            <input class="form-control" name="tipo" #genreCtrl=ngModel [(ngModel)]="peliSelected.tipo"
             placeholder="Género">
         </div>
 
         <div class="form-group">
             <label>Público</label>
-            <input class="form-control" name="público" #authorCtrl="ngModel" [(ngModel)]="peliculaSeleccionada.cantPublico"
+            <input class="form-control" name="público" #authorCtrl="ngModel" [(ngModel)]="peliSelected.cantPublico"
                 placeholder="Público" required>
         </div>
 

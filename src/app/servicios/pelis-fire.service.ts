@@ -20,8 +20,8 @@ export class PelisFireService {
 
   getAll() {
     this.pelisCollection = this.firestore.collection<Pelicula>('peliculas');
-    return this.pelisCollection.valueChanges({idField: 'uid'}) as Observable<Pelicula[]>;
-    //return this.pelisCollection.valueChanges({ idField: 'uid' });
+    //return this.pelisCollection.valueChanges() as Observable<Pelicula[]>;
+    return this.pelisCollection.valueChanges({idField: 'id'}) as Observable<Pelicula[]>;
   }
 
   getPelicula(id: string){

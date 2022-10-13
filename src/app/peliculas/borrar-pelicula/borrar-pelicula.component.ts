@@ -25,7 +25,7 @@ export class BorrarPeliculaComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.servFire.borrarPeli(peli.id);
-        this.peliculaSeleccionada = null;
+        this.deseleccionar();
         Swal.fire(
           'Deleted!',
           'Your file has been deleted.',
@@ -33,7 +33,10 @@ export class BorrarPeliculaComponent implements OnInit {
         )
       }
     })
+  }
 
+  deseleccionar(){
+    this.peliculaSeleccionadaChange.emit(null);
   }
 
   ngOnInit(): void {

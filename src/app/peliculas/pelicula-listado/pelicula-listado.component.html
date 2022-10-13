@@ -1,5 +1,5 @@
 <li *ngFor="let item of listadoRecibido | async">
-    ID: {{item.id}} - 
+    ID: {{item.id.substring(0,4)| uppercase}} - 
     Nombre: {{item.nombre}} - 
     Tipo: {{item.tipo}} - 
     Fecha Estreno: {{item.estreno}} - 

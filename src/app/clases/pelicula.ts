@@ -1,6 +1,6 @@
 import { Actor } from './actor';
 export class Pelicula {
-    id:number;
+    id:string;
     nombre:string;
     tipo:string;
     estreno:number;
@@ -8,7 +8,7 @@ export class Pelicula {
     actor:string;
     foto:string;
 
-    constructor(id:number, nombre:string, tipo:string, 
+    constructor(id:string, nombre:string, tipo:string, 
                 estreno:number, cantPublico:number, 
                 actor:string, foto:string){
         this.id = id;

@@ -52,9 +52,9 @@ export class PeliculaAltaComponent implements OnInit {
   })
 
   guardarPelicula() {
+    if(this.selectedFile != undefined){
     this.loading = !this.loading;
     this.claseBoton = "disabled";
-    console.log(this.selectedFile);
     this.upload(this.selectedFile).subscribe(
       (event: any) => {
         if (typeof (event) === 'object') {
@@ -79,6 +79,7 @@ export class PeliculaAltaComponent implements OnInit {
         }
       }
     );
+  }
   }
 
   traerActores() {
