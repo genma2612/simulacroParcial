@@ -13,14 +13,8 @@ export class ActorAltaComponent implements OnInit {
   @Output() enviarActor:EventEmitter<any>=new EventEmitter<any>;
 
   public forma: FormGroup;
-
-
   nuevoActor:any = {};
-  nombre:string = "";
-  apellido:string = "";
-  edad?:number;
   paisSeleccionado?:any;
-  nombrePais:string = 'Pais';
 
   //constructor(private servicioActores: ActoresService){}
   
@@ -29,18 +23,19 @@ export class ActorAltaComponent implements OnInit {
       'nombre': ['', [Validators.required, this.spacesValidator]],
       'apellido': ['', Validators.required],
       'edad': ['', [Validators.required, Validators.min(18), Validators.max(99)]],
-      'pais': [this.paisSeleccionado, this.hayPaisSeleccionado]
+      'pais': ['Pais', this.hayPaisSeleccionado]
     });
+    //console.info('Valor inicial país: ',this.forma.controls['pais'].value);
     this.forma.controls['pais'].disable();
   }
 
   ngOnInit(): void {
-
   }
 
   actualizarPais($event:any){
     this.paisSeleccionado = $event;
-    this.nombrePais = $event.translations.spa.common;
+    this.forma.controls['pais'].setValue($event.translations.spa.common);
+
     }
 
   guardarActor(){
@@ -49,7 +44,7 @@ export class ActorAltaComponent implements OnInit {
     this.nuevoActor.apellido=this.forma.controls['apellido'].value;
     this.nuevoActor.edad=this.forma.controls['edad'].value;
     this.nuevoActor.pais=this.paisSeleccionado;
-    console.log(this.nuevoActor);
+    //console.log(this.nuevoActor);
     this.servicioActores.guardarActorEnListado(this.nuevoActor);
   }
 
@@ -64,9 +59,11 @@ export class ActorAltaComponent implements OnInit {
     }
 
     private hayPaisSeleccionado(control: AbstractControl): null | object {
-      const pais = this.paisSeleccionado != 'Pais';
-      return pais
-        ? { hayPais: true }
+      const pais = <string>control.value;
+      const hayPaisSeleccionado = pais !== 'Pais';
+      console.info('booleano: ', hayPaisSeleccionado);
+      return hayPaisSeleccionado
+        ? { noHayPais: true }
         : null; 
     }
 

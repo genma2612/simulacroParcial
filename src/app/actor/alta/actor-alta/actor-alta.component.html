@@ -34,8 +34,8 @@
                             </div>
                             <p></p>
                             <div class="form-group col">
-                                <input type="text" name="pais" formControlName="pais" class="form-control" placeholder={{nombrePais}}>
-                                <small class="invalid" *ngIf="!forma.controls['pais'].errors?.['hayPaisSeleccionado']">
+                                <input type="text" name="pais" formControlName="pais" class="form-control">
+                                <small class="invalid" *ngIf="forma.controls['pais'].errors?.['hayPaisSeleccionado']">
                                     Seleccione un pais del listado
                             </small>  
                             </div>
@@ -45,7 +45,7 @@
                         </div>
                     </div>
                     <div class="d-grid gap-2">
-                        <button class="btn btn-primary"  [disabled]="forma.invalid" (click)="guardarActor()">Guardar</button>
+                        <button class="btn btn-primary" [disabled]="forma.invalid" (click)="guardarActor()">Guardar</button>
                     </div>
                 </form>
             </div>
